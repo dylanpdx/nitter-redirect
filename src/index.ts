@@ -14,7 +14,7 @@ export default {
 
 			if (!response){
 				response = await fetch(cacheKey)
-				if (response.status != 200)
+				if (response.status != 200 || (await response.json() as Instances).latest_commit.includes("fix your bot"))
 					return undefined;
 				response = new Response(response.body, response);
 				response.headers.append("Cache-Control", "s-maxage=3600");
