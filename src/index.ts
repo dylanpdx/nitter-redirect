@@ -5,10 +5,10 @@ import { Instances } from "./instances";
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
 		const apiUrl = "https://status.d420.de/api/v1/instances"
-		
+
 		async function getInstances(ctx:ExecutionContext<unknown>): Promise<Instances|undefined>{
 			const cache = caches.default;
-			const cacheKey = new Request(apiUrl);
+			const cacheKey = new Request(apiUrl,{headers:{"User-Agent":"nitter-redirect (https://github.com/dylanpdx/nitter-redirect)"}});
 
 			let response = await cache.match(cacheKey);
 
