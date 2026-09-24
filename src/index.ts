@@ -4,8 +4,9 @@ import { Instances } from "./instances";
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
+		const apiUrl = "https://status.d420.de/api/v1/instances"
+		
 		async function getInstances(ctx:ExecutionContext<unknown>): Promise<Instances|undefined>{
-			const apiUrl = "https://status.d420.de/api/v1/instances"
 			const cache = caches.default;
 			const cacheKey = new Request(apiUrl);
 
